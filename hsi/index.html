@@ -6,77 +6,160 @@
   <title>Haiti Security Index</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f8fa;
-      color: #222;
+      font-family: Georgia, serif;
+      background: #f4f4f2;
+      color: #1a1a1a;
     }
+
+    /* ── HEADER ── */
     header {
-      background: #1a3a5c;
+      background: linear-gradient(135deg, #00209F 0%, #00209F 55%, #D21034 100%);
+      border-bottom: 5px solid #D21034;
       color: white;
-      padding: 28px 40px 20px;
+      padding: 32px 48px 28px;
     }
-    header h1 { font-size: 1.8rem; margin-bottom: 6px; }
-    header p  { font-size: 0.95rem; opacity: 0.82; }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .flag {
+      width: 72px;
+      height: auto;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .header-text h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+    }
+    .header-text p {
+      font-size: 1.05rem;
+      opacity: 0.88;
+      font-style: italic;
+    }
     .badge {
       display: inline-block;
       margin-top: 10px;
-      background: rgba(255,255,255,0.15);
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.82rem;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-family: Arial, sans-serif;
     }
-    main { padding: 32px 40px; max-width: 1200px; margin: 0 auto; }
+
+    /* ── MAIN ── */
+    main {
+      padding: 36px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .chart-section {
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      margin-bottom: 32px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      margin-bottom: 36px;
       overflow: hidden;
+      border-top: 4px solid #00209F;
     }
     .chart-section h2 {
-      padding: 16px 24px 0;
-      font-size: 1.05rem;
-      color: #1a3a5c;
+      padding: 18px 28px 4px;
+      font-size: 1.2rem;
+      color: #00209F;
+      font-family: Georgia, serif;
     }
     iframe {
       width: 100%;
-      height: 480px;
+      height: 520px;
       border: none;
       display: block;
     }
+
+    /* ── DOWNLOAD ── */
     .download-bar {
       text-align: center;
-      padding: 12px 0 28px;
+      padding: 8px 0 36px;
     }
     .download-btn {
       display: inline-block;
-      background: #1a3a5c;
+      background: #00209F;
       color: white;
       text-decoration: none;
-      padding: 10px 24px;
-      border-radius: 6px;
-      font-size: 0.95rem;
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
       font-weight: bold;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
+      border: 2px solid transparent;
+      transition: background 0.2s;
     }
-    .download-btn:hover { background: #245080; }
+    .download-btn:hover { background: #D21034; }
+
+    /* ── CITATION ── */
+    .citation-box {
+      background: #fff;
+      border-left: 5px solid #D21034;
+      border-radius: 0 4px 4px 0;
+      padding: 20px 28px;
+      margin-bottom: 36px;
+      font-size: 0.97rem;
+      line-height: 1.7;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .citation-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      color: #00209F;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
     footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.75);
       text-align: center;
-      padding: 20px;
-      font-size: 0.82rem;
-      color: #888;
+      padding: 24px 48px;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    footer .managed {
+      color: white;
+      font-weight: bold;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Haiti Security Index (HSI)</h1>
-    <p>Monthly media-based measure of security conditions in Haiti — All Threats, Threats, and Acts.</p>
-    <span class="badge">Last updated: May 2026</span>
+    <div class="header-inner">
+      <img class="flag"
+           src="https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Haiti.svg"
+           alt="Haiti Flag" />
+      <div class="header-text">
+        <h1>Haiti Security Index (HSI)</h1>
+        <p>A text-based monthly measure of violence and threat perceptions in Haiti</p>
+        <span class="badge">Last updated: May 2026</span>
+      </div>
+    </div>
   </header>
 
   <main>
+
     <div class="chart-section">
       <h2>HSI — All Threats</h2>
       <iframe src="HSI_all.html" title="HSI All Threats"></iframe>
@@ -94,13 +177,27 @@
 
     <div class="download-bar">
       <a class="download-btn" href="HSI_data.csv" download="HSI_data.csv">
-        ⬇ Download Index Data (CSV)
+        ⬇&nbsp; Download Index Data (CSV)
       </a>
     </div>
+
+    <div class="citation-box">
+      <strong>How to cite</strong>
+      Sun, M. H. (2026, Forthcoming). <em>Measuring Security in Real Time: The Haiti Security
+      Index — A Text-Based Monthly Measure of Violence and Threat Perceptions.</em>
+      IMF Working Paper. International Monetary Fund.
+    </div>
+
   </main>
 
   <footer>
-    Haiti Security Index &nbsp;·&nbsp; Data: Dow Jones Factiva &nbsp;·&nbsp; Updated monthly
+    <div class="managed">Managed by the IMF Haiti Desk</div>
+    Data source: Dow Jones Factiva &nbsp;·&nbsp; &copy; 2026 International Monetary Fund
+    <br/>
+    <span style="font-size:0.82rem; opacity:0.7;">
+      * The index is updated monthly on the 5th of each month.
+    </span>
   </footer>
+
 </body>
 </html>
