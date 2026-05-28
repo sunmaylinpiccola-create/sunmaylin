@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haiti Security Index</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f8fa;
+      color: #222;
+    }
+    header {
+      background: #1a3a5c;
+      color: white;
+      padding: 28px 40px 20px;
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: 6px; }
+    header p  { font-size: 0.95rem; opacity: 0.82; }
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.15);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+    }
+    main { padding: 32px 40px; max-width: 1200px; margin: 0 auto; }
+    .chart-section {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .chart-section h2 {
+      padding: 16px 24px 0;
+      font-size: 1.05rem;
+      color: #1a3a5c;
+    }
+    iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+      display: block;
+    }
+    .download-bar {
+      text-align: center;
+      padding: 12px 0 28px;
+    }
+    .download-btn {
+      display: inline-block;
+      background: #1a3a5c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+    }
+    .download-btn:hover { background: #245080; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.82rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Haiti Security Index (HSI)</h1>
+    <p>Monthly media-based measure of security conditions in Haiti — All Threats, Threats, and Acts.</p>
+    <span class="badge">Last updated: May 2026</span>
+  </header>
+
+  <main>
+    <div class="chart-section">
+      <h2>HSI — All Threats</h2>
+      <iframe src="HSI_all.html" title="HSI All Threats"></iframe>
+    </div>
+
+    <div class="chart-section">
+      <h2>HSI — Threats</h2>
+      <iframe src="HSI_threats.html" title="HSI Threats"></iframe>
+    </div>
+
+    <div class="chart-section">
+      <h2>HSI — Acts</h2>
+      <iframe src="HSI_acts.html" title="HSI Acts"></iframe>
+    </div>
+
+    <div class="download-bar">
+      <a class="download-btn" href="HSI_data.csv" download="HSI_data.csv">
+        ⬇ Download Index Data (CSV)
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    Haiti Security Index &nbsp;·&nbsp; Data: Dow Jones Factiva &nbsp;·&nbsp; Updated monthly
+  </footer>
+</body>
+</html>
