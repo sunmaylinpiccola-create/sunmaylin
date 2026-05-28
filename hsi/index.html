@@ -100,6 +100,39 @@
       display: block;
     }
 
+    /* ════ ABOUT ════ */
+    .about-box {
+      background: #fff;
+      border-radius: 6px;
+      border-top: 5px solid #D21034;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 28px 36px;
+      margin-bottom: 40px;
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+    .about-box h2 {
+      font-size: 1.2rem;
+      color: #D21034;
+      margin-bottom: 14px;
+      font-family: Georgia, serif;
+      letter-spacing: 0.01em;
+    }
+    .about-box p {
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .about-box .keywords {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: #555;
+      font-family: Arial, sans-serif;
+    }
+    .about-box .keywords span {
+      font-weight: bold;
+      color: #00209F;
+    }
+
     /* ════ ACTION BUTTONS ════ */
     .action-bar {
       display: flex;
@@ -211,6 +244,38 @@
 
   <main>
 
+    <!-- ABOUT -->
+    <div class="about-box">
+      <h2>About the Haiti Security Index</h2>
+      <p>
+        The <strong>Haiti Security Index (HSI)</strong> is a monthly text-based measure of domestic
+        security conditions spanning January 1997 to the present. It is built from systematic keyword
+        searches of English- and French-language news articles from nine outlets — four Haitian and
+        five international — aggregated and normalized by total media volume.
+      </p>
+      <p>
+        Following the methodology of Caldara and Iacoviello (2022) Geopolitical Risk Index, the HSI
+        separately tracks <em>realized violent acts</em> (HSI-Acts) and <em>forward-looking threat
+        perceptions</em> (HSI-Threats), as well as a composite measure (HSI-All), each normalized to
+        a sample mean of 100. The index captures all major security episodes in Haiti's modern history:
+        the 2004 political crisis, the 2010 earthquake, the 2021 presidential assassination, and the
+        2022–2025 gang consolidation period.
+      </p>
+      <p>
+        The HSI fills a critical data gap in IMF surveillance by providing a high-frequency, replicable,
+        and forward-looking security indicator suitable for nowcasting GDP, inflation, exchange rate
+        pressures, and other macroeconomic outcomes.
+      </p>
+      <p class="keywords">
+        <span>Author:</span> Maylin Han Sun — Western Hemisphere Department, International Monetary Fund
+        (<a href="mailto:hsun2@imf.org" style="color:#D21034;">hsun2@imf.org</a>)
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span>Keywords:</span> Haiti, security index, text analysis, geopolitical risk, gang violence, nowcasting
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span>JEL:</span> D74, E01, O17, C82
+      </p>
+    </div>
+
     <!-- CHART 1 -->
     <div class="chart-section">
       <div class="chart-header">
@@ -243,7 +308,7 @@
       <a class="btn btn-primary" href="HSI_data.csv" download="HSI_data.csv">
         &#11015;&nbsp; Download Index Data (CSV)
       </a>
-      <a class="btn btn-secondary" href="https://www.imf.org/en/Publications/WP" target="_blank" rel="noopener">
+      <a class="btn btn-secondary" href="https://sunmaylinpiccola-create.github.io/sunmaylin/hsi/Haiti_Security_Index_WP.pdf" target="_blank" rel="noopener">
         &#128196;&nbsp; Read the Working Paper
       </a>
     </div>
@@ -252,13 +317,13 @@
     <div class="citation-box">
       <span class="citation-label">How to cite</span>
       <span class="citation-text">
-        Sun, M. H. (2026, Forthcoming). <em>Measuring Security in Real Time: The Haiti Security
-        Index — A Text-Based Monthly Measure of Violence and Threat Perceptions.</em>
-        IMF Working Paper. International Monetary Fund.
+        Sun, M. H. (2026, Forthcoming). <em>Measuring Security in Real Time: The Haiti Security Index —
+        A Text-Based Monthly Measure of Violence and Threat Perceptions.</em>
+        Maylin Han Sun. IMF Working Paper, International Monetary Fund.
       </span>
       <br/>
-      <a class="paper-link" href="https://www.imf.org/en/Publications/WP" target="_blank" rel="noopener">
-        &#8594;&nbsp; Access the full paper at IMF.org
+      <a class="paper-link" href="https://sunmaylinpiccola-create.github.io/sunmaylin/hsi/Haiti_Security_Index_WP.pdf" target="_blank" rel="noopener">
+        &#8594;&nbsp; Download the full working paper (PDF)
       </a>
     </div>
 
