@@ -1,202 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haiti Security Index</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haiti Security Index (HSI)</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: Georgia, serif;
-      background: #f4f4f2;
-      color: #1a1a1a;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f2f2ef;
+      color: #111;
+      font-size: 16px;
     }
 
-    /* ── HEADER ── */
+    /* ════ HEADER ════ */
     header {
-      background: linear-gradient(135deg, #00209F 0%, #00209F 55%, #D21034 100%);
-      border-bottom: 5px solid #D21034;
-      color: white;
-      padding: 32px 48px 28px;
+      background: linear-gradient(120deg, #00209F 0%, #001580 50%, #D21034 100%);
+      border-bottom: 6px solid #D21034;
+      color: #fff;
+      padding: 36px 56px 30px;
     }
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
     .flag {
-      width: 72px;
+      width: 80px;
       height: auto;
-      border: 2px solid rgba(255,255,255,0.4);
-      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.45);
+      border-radius: 5px;
       flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     .header-text h1 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: bold;
       letter-spacing: 0.01em;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
-    .header-text p {
-      font-size: 1.05rem;
-      opacity: 0.88;
+    .header-text .subtitle {
+      font-size: 1.08rem;
+      opacity: 0.9;
       font-style: italic;
+      margin-bottom: 12px;
     }
     .badge {
       display: inline-block;
-      margin-top: 10px;
       background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 4px 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 5px 16px;
       border-radius: 20px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-family: Arial, sans-serif;
+      letter-spacing: 0.02em;
     }
 
-    /* ── MAIN ── */
+    /* ════ MAIN ════ */
     main {
-      padding: 36px 48px;
+      padding: 40px 56px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
+    /* ════ CHARTS ════ */
     .chart-section {
-      background: white;
+      background: #fff;
       border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-      margin-bottom: 36px;
+      border-top: 5px solid #00209F;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+      margin-bottom: 40px;
       overflow: hidden;
-      border-top: 4px solid #00209F;
     }
-    .chart-section h2 {
-      padding: 18px 28px 4px;
-      font-size: 1.2rem;
+    .chart-header {
+      padding: 20px 28px 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .chart-header h2 {
+      font-size: 1.3rem;
       color: #00209F;
       font-family: Georgia, serif;
     }
+    .chart-header .chart-desc {
+      font-size: 0.92rem;
+      color: #666;
+      font-style: italic;
+      font-family: Arial, sans-serif;
+    }
     iframe {
       width: 100%;
-      height: 520px;
+      height: 530px;
       border: none;
       display: block;
     }
 
-    /* ── DOWNLOAD ── */
-    .download-bar {
-      text-align: center;
-      padding: 8px 0 36px;
+    /* ════ ACTION BUTTONS ════ */
+    .action-bar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 4px 0 44px;
     }
-    .download-btn {
+    .btn {
       display: inline-block;
-      background: #00209F;
-      color: white;
-      text-decoration: none;
-      padding: 12px 32px;
+      padding: 13px 34px;
       border-radius: 4px;
       font-size: 1rem;
       font-family: Arial, sans-serif;
       font-weight: bold;
       letter-spacing: 0.03em;
-      border: 2px solid transparent;
-      transition: background 0.2s;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
     }
-    .download-btn:hover { background: #D21034; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: #00209F;
+      color: #fff;
+      border: 2px solid #00209F;
+    }
+    .btn-primary:hover { background: #001580; border-color: #001580; }
+    .btn-secondary {
+      background: #fff;
+      color: #D21034;
+      border: 2px solid #D21034;
+    }
+    .btn-secondary:hover { background: #D21034; color: #fff; }
 
-    /* ── CITATION ── */
+    /* ════ CITATION ════ */
     .citation-box {
       background: #fff;
-      border-left: 5px solid #D21034;
-      border-radius: 0 4px 4px 0;
-      padding: 20px 28px;
-      margin-bottom: 36px;
-      font-size: 0.97rem;
-      line-height: 1.7;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-    .citation-box strong {
-      display: block;
-      margin-bottom: 6px;
+      border-left: 6px solid #D21034;
+      border-radius: 0 6px 6px 0;
+      padding: 22px 30px;
+      margin-bottom: 40px;
       font-size: 1rem;
+      line-height: 1.8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .citation-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
       color: #00209F;
       font-family: Arial, sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #1a1a2e;
-      color: rgba(255,255,255,0.75);
-      text-align: center;
-      padding: 24px 48px;
-      font-family: Arial, sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-    footer .managed {
-      color: white;
       font-weight: bold;
-      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .citation-text {
+      color: #222;
+    }
+    .paper-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: Arial, sans-serif;
+      font-size: 0.92rem;
+      color: #D21034;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px solid #D21034;
+      padding-bottom: 1px;
+    }
+    .paper-link:hover { color: #00209F; border-color: #00209F; }
+
+    /* ════ FOOTER ════ */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.72);
+      text-align: center;
+      padding: 28px 56px;
+      font-family: Arial, sans-serif;
+      font-size: 0.92rem;
+      line-height: 2;
+    }
+    .footer-managed {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .footer-note {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      margin-top: 6px;
     }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <img class="flag"
            src="https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Haiti.svg"
-           alt="Haiti Flag" />
+           alt="Flag of Haiti" />
       <div class="header-text">
         <h1>Haiti Security Index (HSI)</h1>
-        <p>A text-based monthly measure of violence and threat perceptions in Haiti</p>
-        <span class="badge">Last updated: May 2026</span>
+        <p class="subtitle">A text-based monthly measure of violence and threat perceptions in Haiti</p>
+        <span class="badge">&#128197;&nbsp; Last updated: May 2026</span>
       </div>
     </div>
   </header>
 
   <main>
 
+    <!-- CHART 1 -->
     <div class="chart-section">
-      <h2>HSI — All Threats</h2>
-      <iframe src="HSI_all.html" title="HSI All Threats"></iframe>
+      <div class="chart-header">
+        <h2>HSI — All Threats</h2>
+        <span class="chart-desc">Combined threat and act mentions in Haitian media</span>
+      </div>
+      <iframe src="HSI_all.html" title="HSI All Threats" loading="lazy"></iframe>
     </div>
 
+    <!-- CHART 2 -->
     <div class="chart-section">
-      <h2>HSI — Threats</h2>
-      <iframe src="HSI_threats.html" title="HSI Threats"></iframe>
+      <div class="chart-header">
+        <h2>HSI — Threats</h2>
+        <span class="chart-desc">Threat language and perceived insecurity</span>
+      </div>
+      <iframe src="HSI_threats.html" title="HSI Threats" loading="lazy"></iframe>
     </div>
 
+    <!-- CHART 3 -->
     <div class="chart-section">
-      <h2>HSI — Acts</h2>
-      <iframe src="HSI_acts.html" title="HSI Acts"></iframe>
+      <div class="chart-header">
+        <h2>HSI — Acts</h2>
+        <span class="chart-desc">Reported acts of violence</span>
+      </div>
+      <iframe src="HSI_acts.html" title="HSI Acts" loading="lazy"></iframe>
     </div>
 
-    <div class="download-bar">
-      <a class="download-btn" href="HSI_data.csv" download="HSI_data.csv">
-        ⬇&nbsp; Download Index Data (CSV)
+    <!-- DOWNLOAD + PAPER BUTTONS -->
+    <div class="action-bar">
+      <a class="btn btn-primary" href="HSI_data.csv" download="HSI_data.csv">
+        &#11015;&nbsp; Download Index Data (CSV)
+      </a>
+      <a class="btn btn-secondary" href="https://www.imf.org/en/Publications/WP" target="_blank" rel="noopener">
+        &#128196;&nbsp; Read the Working Paper
       </a>
     </div>
 
+    <!-- CITATION -->
     <div class="citation-box">
-      <strong>How to cite</strong>
-      Sun, M. H. (2026, Forthcoming). <em>Measuring Security in Real Time: The Haiti Security
-      Index — A Text-Based Monthly Measure of Violence and Threat Perceptions.</em>
-      IMF Working Paper. International Monetary Fund.
+      <span class="citation-label">How to cite</span>
+      <span class="citation-text">
+        Sun, M. H. (2026, Forthcoming). <em>Measuring Security in Real Time: The Haiti Security
+        Index — A Text-Based Monthly Measure of Violence and Threat Perceptions.</em>
+        IMF Working Paper. International Monetary Fund.
+      </span>
+      <br/>
+      <a class="paper-link" href="https://www.imf.org/en/Publications/WP" target="_blank" rel="noopener">
+        &#8594;&nbsp; Access the full paper at IMF.org
+      </a>
     </div>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="managed">Managed by the IMF Haiti Desk</div>
-    Data source: Dow Jones Factiva &nbsp;·&nbsp; &copy; 2026 International Monetary Fund
-    <br/>
-    <span style="font-size:0.82rem; opacity:0.7;">
-      * The index is updated monthly on the 5th of each month.
-    </span>
+    <div class="footer-managed">Managed by the IMF Haiti Desk</div>
+    Data source: Dow Jones Factiva &nbsp;&middot;&nbsp; &copy; 2026 International Monetary Fund
+    <div class="footer-note">* The index is updated monthly on the 5th of each month.</div>
   </footer>
 
 </body>
